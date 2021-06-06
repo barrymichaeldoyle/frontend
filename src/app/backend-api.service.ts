@@ -1,6 +1,6 @@
 // FYI: any request that needs the HttpOnly cookie to be sent (e.g. b/c the server
-// needs the seed phrase) needs the {withCredentials: true} option. It may also needed to
-// get the browser to save the cookie in the response.
+// needs the seed phrase) needs the {withCredentials: true} option. It may also be needed
+// to get the browser to save the cookie in the response.
 // https://github.com/github/fetch#sending-cookies
 import { Injectable } from "@angular/core";
 import { Observable, of, throwError } from "rxjs";
@@ -193,7 +193,7 @@ export class BalanceEntryResponse {
   // The public keys are provided for the frontend
   CreatorPublicKeyBase58Check: string;
 
-  // Has the hodler purchased these creator coins
+  // Has the HODLer purchased these creator coins
   HasPurchased: boolean;
   // How much this HODLer owns of a particular creator coin.
   BalanceNanos: number;
@@ -455,7 +455,7 @@ export class BackendApiService {
     return req.pipe(catchError(this._handleError));
   }
 
-  // TODO: Use Broadcast bool isntead
+  // TODO: Use Broadcast bool instead
   SendBitCloutPreview(
     endpoint: string,
     SenderPublicKeyBase58Check: string,
@@ -553,7 +553,7 @@ export class BackendApiService {
             // remaining outputs.
             // BlockCypher also
             // doesn't tell us when a transaction is out of outputs, so we have
-            // to assume it has more outputs if its at the maximum number of outputs,
+            // to assume it has more outputs if it's at the maximum number of outputs,
             // which is 20 for BlockCypher.
             if (res.outputs.length >= 20) {
               tx.next_outputs = res.next_outputs;
