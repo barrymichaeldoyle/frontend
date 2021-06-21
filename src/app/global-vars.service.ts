@@ -1,21 +1,30 @@
-import { Injectable } from "@angular/core";
-import { BalanceEntryResponse, PostEntryResponse, User } from "./backend-api.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import { BackendApiService } from "./backend-api.service";
-import { RouteNames } from "./app-routing.module";
-import ConfettiGenerator from "confetti-js";
-import { Observable, Observer } from "rxjs";
-import { LoggedInUserObservableResult } from "../lib/observable-results/logged-in-user-observable-result";
-import { FollowChangeObservableResult } from "../lib/observable-results/follow-change-observable-result";
-import { SwalHelper } from "../lib/helpers/swal-helper";
-import { environment } from "../environments/environment";
-import { AmplitudeClient } from "amplitude-js";
-import { DomSanitizer } from "@angular/platform-browser";
-import { IdentityService } from "./identity.service";
-import { BithuntService, CommunityProject } from "../lib/services/bithunt/bithunt-service";
-import { LeaderboardResponse, PulseService } from "../lib/services/pulse/pulse-service";
-import { RightBarCreatorsLeaderboardComponent } from "./right-bar-creators/right-bar-creators-leaderboard/right-bar-creators-leaderboard.component";
-import { HttpClient } from "@angular/common/http";
+import { AmplitudeClient } from 'amplitude-js'
+import ConfettiGenerator from 'confetti-js'
+import { Observable, Observer } from 'rxjs'
+
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { DomSanitizer } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+
+import { environment } from '../environments/environment'
+import { SwalHelper } from '../lib/helpers/swal-helper'
+import {
+  FollowChangeObservableResult
+} from '../lib/observable-results/follow-change-observable-result'
+import {
+  LoggedInUserObservableResult
+} from '../lib/observable-results/logged-in-user-observable-result'
+import { BithuntService, CommunityProject } from '../lib/services/bithunt/bithunt-service'
+import { LeaderboardResponse, PulseService } from '../lib/services/pulse/pulse-service'
+import { RouteNames } from './app-routing.module'
+import {
+  BackendApiService, BalanceEntryResponse, PostEntryResponse, User
+} from './backend-api.service'
+import { IdentityService } from './identity.service'
+import {
+  RightBarCreatorsLeaderboardComponent
+} from './right-bar-creators/right-bar-creators-leaderboard/right-bar-creators-leaderboard.component'
 
 export enum ConfettiSvg {
   DIAMOND = "diamond",
@@ -690,7 +699,7 @@ export class GlobalVarsService {
 
   launchLoginFlow() {
     this.logEvent("account : login : launch");
-    this.identityService.launch("/log-in").subscribe((res) => {
+    this.identityService.launch("/log-in?accessLevelRequest=3").subscribe((res) => {
       this.logEvent("account : login : success");
       this.backendApi.setIdentityServiceUsers(res.users, res.publicKeyAdded);
       this.updateEverything().subscribe(() => {
@@ -701,7 +710,7 @@ export class GlobalVarsService {
 
   launchSignupFlow() {
     this.logEvent("account : create : launch");
-    this.identityService.launch("/log-in").subscribe((res) => {
+    this.identityService.launch("/log-in?accessLevelRequest=3").subscribe((res) => {
       this.logEvent("account : create : success");
       this.backendApi.setIdentityServiceUsers(res.users, res.publicKeyAdded);
       this.updateEverything().subscribe(() => {
