@@ -28,18 +28,24 @@ header @html Cache-Control no-store
 header @html Content-Security-Policy "
   default-src 'self';
   connect-src 'self'
+    cloutregulars.com:*
     bitclout.com:*
+    api.cloutregulars.com
     api.bitclout.com
+    bithunt.cloutregulars.com
     bithunt.bitclout.com
+    pulse.cloutregulars.com
     pulse.bitclout.com
     api.bitpop.dev
     localhost:*
+    explorer.cloutregulars.com:*
     explorer.bitclout.com:*
     https://api.blockchain.com/ticker
     https://api.blockchain.com/mempool/fees
     https://ka-f.fontawesome.com/
     bitcoinfees.earn.com
     api.blockcypher.com
+    amp.cloutregulars.com api.cloutregulars.green api.cloutregulars.blue
     amp.bitclout.com api.bitclout.green api.bitclout.blue
     api.bitclout.navy
     api.testwyre.com
@@ -51,13 +57,16 @@ header @html Content-Security-Policy "
     'unsafe-inline'
     https://fonts.googleapis.com
     https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css;
-  img-src 'self' data: i.imgur.com images.bitclout.com;
+  img-src 'self' data: i.imgur.com images.cloutregulars.com images.bitclout.com;
   font-src 'self'
     https://fonts.googleapis.com
     https://fonts.gstatic.com
     https://ka-f.fontawesome.com;
   frame-src 'self'
     localhost:*
+    identity.cloutregulars.com
+    identity.cloutregulars.blue
+    identity.cloutregulars.green
     identity.bitclout.com
     identity.bitclout.blue
     identity.bitclout.green
