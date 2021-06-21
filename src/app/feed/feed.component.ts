@@ -18,7 +18,7 @@ import { GlobalVarsService } from '../global-vars.service'
   styleUrls: ["./feed.component.sass"],
 })
 export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
-  static GLOBAL_TAB = "Global";
+  static GLOBAL_TAB = "Clout Regulars";
   static FOLLOWING_TAB = "Following";
   static MARKET_TAB = "Market";
   static TABS = [FeedComponent.GLOBAL_TAB, FeedComponent.FOLLOWING_TAB];
