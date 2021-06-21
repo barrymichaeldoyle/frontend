@@ -1,6 +1,6 @@
 {
-  "name": "bitclout-frontend",
-  "version": "0.0.0",
+  "name": "cloutregulars-frontend",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -15,7 +15,7 @@
   "browserslist": [
     "> 5%"
   ],
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~11.2.12",
     "@angular/cdk": "^11.2.11",
