@@ -1,12 +1,16 @@
-import { Component, OnInit, Input, OnDestroy, ChangeDetectorRef, AfterViewChecked } from "@angular/core";
-import { GlobalVarsService } from "../global-vars.service";
-import { BackendApiService } from "../backend-api.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Subscription } from "rxjs";
-import { tap, finalize, first } from "rxjs/operators";
-import * as _ from "lodash";
-import PullToRefresh from "pulltorefreshjs";
-import { Title } from "@angular/platform-browser";
+import * as _ from 'lodash'
+import PullToRefresh from 'pulltorefreshjs'
+import { Subscription } from 'rxjs'
+import { finalize, first, tap } from 'rxjs/operators'
+
+import {
+  AfterViewChecked, ChangeDetectorRef, Component, Input, OnDestroy, OnInit
+} from '@angular/core'
+import { Title } from '@angular/platform-browser'
+import { ActivatedRoute, Router } from '@angular/router'
+
+import { BackendApiService } from '../backend-api.service'
+import { GlobalVarsService } from '../global-vars.service'
 
 @Component({
   selector: "feed",
@@ -424,18 +428,18 @@ export class FeedComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     // defaultActiveTab is "Following" if the user is following anybody. Otherwise
     // the default is global.
-    let defaultActiveTab;
-    const numFollowing = Object.keys(this.followedPublicKeyToProfileEntry).length;
-    if (numFollowing >= FeedComponent.MIN_FOLLOWING_TO_SHOW_FOLLOW_FEED_BY_DEFAULT) {
-      defaultActiveTab = FeedComponent.FOLLOWING_TAB;
-    } else {
-      defaultActiveTab = FeedComponent.GLOBAL_TAB;
-    }
+    // let defaultActiveTab;
+    // const numFollowing = Object.keys(this.followedPublicKeyToProfileEntry).length;
+    // if (numFollowing >= FeedComponent.MIN_FOLLOWING_TO_SHOW_FOLLOW_FEED_BY_DEFAULT) {
+    //   defaultActiveTab = FeedComponent.FOLLOWING_TAB;
+    // } else {
+    //   defaultActiveTab = FeedComponent.GLOBAL_TAB;
+    // }
 
     this.feedTabs = [FeedComponent.GLOBAL_TAB, FeedComponent.FOLLOWING_TAB];
 
     if (!this.activeTab) {
-      this.activeTab = defaultActiveTab;
+      this.activeTab = FeedComponent.GLOBAL_TAB;
     }
     this._handleTabClick(this.activeTab);
   }
