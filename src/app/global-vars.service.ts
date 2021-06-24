@@ -59,7 +59,7 @@ export class GlobalVarsService {
     private httpClient: HttpClient
   ) {}
 
-  static MAX_POST_LENGTH = 280;
+  static MAX_POST_LENGTH = 1000;
 
   static FOUNDER_REWARD_BASIS_POINTS_WARNING_THRESHOLD = 50 * 100;
 
@@ -699,7 +699,7 @@ export class GlobalVarsService {
 
   launchLoginFlow() {
     this.logEvent("account : login : launch");
-    this.identityService.launch("/log-in?accessLevelRequest=3").subscribe((res) => {
+    this.identityService.launch("/log-in?accessLevelRequest=4").subscribe((res) => {
       this.logEvent("account : login : success");
       this.backendApi.setIdentityServiceUsers(res.users, res.publicKeyAdded);
       this.updateEverything().subscribe(() => {
@@ -710,7 +710,7 @@ export class GlobalVarsService {
 
   launchSignupFlow() {
     this.logEvent("account : create : launch");
-    this.identityService.launch("/log-in?accessLevelRequest=3").subscribe((res) => {
+    this.identityService.launch("/log-in?accessLevelRequest=4").subscribe((res) => {
       this.logEvent("account : create : success");
       this.backendApi.setIdentityServiceUsers(res.users, res.publicKeyAdded);
       this.updateEverything().subscribe(() => {
